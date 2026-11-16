@@ -16,13 +16,15 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Avatar, AvatarFallback } from "../ui/avatar"
+import { Button } from "../ui/button"
+import { PencilIcon } from "@hugeicons/core-free-icons"
 
 export default function LeftSidebar() {
   const pathname = usePathname()
   return (
     <Sidebar
       collapsible="none"
-      className="sticky top-0 hidden h-svh w-60 shrink-0 border-r border-border md:flex"
+      className="sticky top-0 hidden h-svh w-60 shrink-0 border-r border-border px-1 md:flex"
     >
       <SidebarHeader className="border-b">
         <Link href="/" className="flex items-center gap-3 overflow-hidden">
@@ -47,7 +49,7 @@ export default function LeftSidebar() {
       </SidebarHeader>
       <SidebarContent className="px-3 py-4">
         <SidebarGroup className="p-0">
-          <SidebarMenu className="gap-1">
+          <SidebarMenu className="gap-2">
             {SIDEBAR_LINKS.map((link) => {
               const isActive =
                 pathname === link.url ||
@@ -77,6 +79,17 @@ export default function LeftSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <div className="pb-3">
+        <Button size={"lg"} className={"w-full"}>
+          <HugeiconsIcon
+            icon={PencilIcon}
+            size={19}
+            strokeWidth={1.8}
+            className="shrink-0"
+          />
+          Start a conversation
+        </Button>
+      </div>
       <SidebarFooter className="border-t p-3">
         <div className="flex items-center gap-3">
           <Avatar>
