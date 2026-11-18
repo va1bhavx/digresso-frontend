@@ -10,10 +10,10 @@ export default function DashboardLayout({
 }) {
   return (
     <SidebarProvider>
-      <div className="mx-auto flex min-h-screen w-full max-w-5xl justify-center">
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl justify-center">
         <LeftSidebar />
 
-        <main className="min-w-0 flex-1 border-r border-border px-4 py-6 pb-28 md:pb-6 lg:border-x">
+        <main className="min-w-0 flex-1 border-r py-6 pb-28 md:pb-6">
           {children}
         </main>
         <RightSidebar />

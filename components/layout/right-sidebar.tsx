@@ -46,19 +46,19 @@ export default function RightSidebar() {
           />
         </section>
         <section>
-          <Card>
+          <Card className="border-0 bg-transparent pb-0 ring-0">
             <CardHeader>
               <CardTitle>Trending now</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-0 pb-0!">
               <div className="flex flex-col">
                 {TRENDING_NOW.map((trending) => (
                   <div
-                    className="flex flex-col gap-2 px-4 py-2 hover:cursor-pointer hover:bg-primary-foreground"
+                    className="group flex flex-col gap-2 px-4 py-2 hover:cursor-pointer hover:bg-popover"
                     key={trending.id}
                   >
                     <div>
-                      <span className="text-xs tracking-tight text-muted-foreground">
+                      <span className="text-xs tracking-tight text-muted-foreground group-hover:text-primary">
                         {trending.category}
                       </span>
                     </div>
