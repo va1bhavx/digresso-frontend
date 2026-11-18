@@ -26,8 +26,8 @@ export default function LeftSidebar() {
       collapsible="none"
       className="sticky top-0 hidden h-svh w-60 shrink-0 border-r border-border px-1 md:flex"
     >
-      <SidebarHeader className="border-b">
-        <Link href="/" className="flex items-center gap-3 overflow-hidden">
+      <SidebarHeader className="">
+        <Link href="/" className="flex items-center overflow-hidden">
           <Image
             src="/digresso.png"
             alt="Digresso"

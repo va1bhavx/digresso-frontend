@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function HomeHeader() {
   return (
     <>
-      <Tabs defaultValue="overview" className={"w-full"}>
+      <Tabs defaultValue="overview" className={"w-full py-4"}>
         <TabsList
           variant="line"
           className={"flex w-full items-center justify-center border-b"}
