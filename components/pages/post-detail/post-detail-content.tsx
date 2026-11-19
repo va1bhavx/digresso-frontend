@@ -24,7 +24,7 @@ export default function PostDetailContent() {
   const [comment, setComment] = useState("")
 
   return (
-    <section className="relative pb-4">
+    <section className="relative">
       <div className="flex items-center justify-between px-4 py-4">
         <div className="flex items-center gap-3">
           <Avatar size="lg">
@@ -112,11 +112,11 @@ export default function PostDetailContent() {
         </div>
       </div>
 
-      <div className="pb-36 md:pb-32">
+      <div className="">
         <PostComment />
       </div>
 
-      <div className="sticky bottom-0 z-30 px-2 pb-2">
+      <div className="sticky bottom-0 z-30 px-2 pb-[max(env(safe-area-inset-bottom),0.25rem)]">
         <div className="rounded-2xl border border-border bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/85">
           <div
             className={cn(
