@@ -107,7 +107,7 @@ export default function PostDetailContent() {
         <PostComment />
       </div>
 
-      <div className="sticky bottom-0 w-full px-4 py-4">
+      <div className="sticky bottom-0 z-20 w-full px-4 py-4">
         <div className="relative">
           <Avatar className={"absolute top-2 left-2"}>
             <AvatarFallback>VK</AvatarFallback>

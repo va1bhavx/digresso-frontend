@@ -15,6 +15,10 @@ export default function PostComment() {
 
       <TabsContent value={"relevant"} className={""}>
         <PostReplies />
+        <PostReplies />
+        <PostReplies />
+        <PostReplies />
+        <PostReplies />
       </TabsContent>
     </Tabs>
   )
