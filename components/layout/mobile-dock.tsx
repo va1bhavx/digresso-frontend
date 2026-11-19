@@ -8,6 +8,11 @@ import { usePathname } from "next/navigation"
 
 export default function MobileDock() {
   const pathname = usePathname()
+  const isPostDetail = pathname.startsWith("/posts/")
+
+  if (isPostDetail) {
+    return null
+  }
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-2 md:hidden">

@@ -1,7 +1,12 @@
+"use client"
+
+import { useState } from "react"
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { Textarea } from "@/components/ui/textarea"
 import {
   ArrowExpand01Icon,
   Bookmark01Icon,
@@ -11,12 +16,15 @@ import {
   UserGroup03Icon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { cn } from "cn"
 import PostComment from "./post-comments"
-import { Input } from "@/components/ui/input"
 
 export default function PostDetailContent() {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [comment, setComment] = useState("")
+
   return (
-    <section className="relative">
+    <section className="relative pb-4">
       <div className="flex items-center justify-between px-4 py-4">
         <div className="flex items-center gap-3">
           <Avatar size="lg">
@@ -103,26 +111,58 @@ export default function PostDetailContent() {
           </Button>
         </div>
       </div>
-      <div>
-        <div className="sticky top-0 z-20 w-full px-4 py-4">
-          <div className="relative">
-            <Avatar className={"absolute top-2 left-2"}>
+
+      <div className="pb-36 md:pb-32">
+        <PostComment />
+      </div>
+
+      <div className="sticky bottom-0 z-30 px-2 pb-2">
+        <div className="rounded-2xl border border-border bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/85">
+          <div
+            className={cn(
+              "flex gap-3 rounded-xl bg-muted/20 p-2 transition-[min-height] duration-200",
+              isExpanded ? "items-end" : "items-end"
+            )}
+          >
+            <Avatar className="mb-1 shrink-0">
               <AvatarFallback>VK</AvatarFallback>
             </Avatar>
-            <Input
-              className="min-h-12 rounded-full bg-primary-foreground! pl-12"
-              placeholder="What's your reply?"
-            />
-            <Button
-              variant={"ghost"}
-              size={"sm"}
-              className={"absolute top-2 right-2"}
-            >
-              <HugeiconsIcon icon={ArrowExpand01Icon} />
-            </Button>
+
+            <div className="flex min-w-0 flex-1 items-end gap-2">
+              <Textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="What's your reply?"
+                rows={isExpanded ? 8 : 1}
+                className={cn(
+                  "resize-none border-0 bg-transparent px-1 py-2 shadow-none transition-all focus-visible:ring-0 dark:bg-transparent",
+                  isExpanded
+                    ? "max-h-[45vh] min-h-[10rem]"
+                    : "max-h-32 min-h-10 py-2.5"
+                )}
+              />
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                aria-label={
+                  isExpanded ? "Collapse comment box" : "Expand comment box"
+                }
+                aria-expanded={isExpanded}
+                className="mb-1 shrink-0"
+                onClick={() => setIsExpanded((v) => !v)}
+              >
+                <HugeiconsIcon
+                  icon={ArrowExpand01Icon}
+                  className={cn(
+                    "transition-transform duration-200",
+                    isExpanded && "rotate-180"
+                  )}
+                />
+              </Button>
+            </div>
           </div>
         </div>
-        <PostComment />
       </div>
     </section>
   )
