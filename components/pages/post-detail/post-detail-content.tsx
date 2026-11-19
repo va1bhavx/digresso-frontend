@@ -18,10 +18,12 @@ import {
 import { HugeiconsIcon } from "@hugeicons/react"
 import { cn } from "cn"
 import PostComment from "./post-comments"
+import { usePostDetailReply } from "./post-detail-reply-context"
 
 export default function PostDetailContent() {
   const [isExpanded, setIsExpanded] = useState(false)
   const [comment, setComment] = useState("")
+  const { replyTarget, cancelReply } = usePostDetailReply()
 
   return (
     <section className="relative">
@@ -129,18 +131,42 @@ export default function PostDetailContent() {
             </Avatar>
 
             <div className="flex min-w-0 flex-1 items-end gap-2">
-              <Textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="What's your reply?"
-                rows={isExpanded ? 8 : 1}
-                className={cn(
-                  "resize-none border-0 bg-transparent px-1 py-2 shadow-none transition-all focus-visible:ring-0 dark:bg-transparent",
-                  isExpanded
-                    ? "max-h-[45vh] min-h-[10rem]"
-                    : "max-h-32 min-h-10 py-2.5"
-                )}
-              />
+              <div className="flex min-w-0 flex-1 flex-col">
+                {replyTarget ? (
+                  <div className="mb-1 flex items-center justify-between gap-2 px-1 text-xs text-muted-foreground">
+                    <span className="truncate">
+                      Replying to{" "}
+                      <span className="font-medium text-foreground">
+                        @{replyTarget.username}
+                      </span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={cancelReply}
+                      className="shrink-0 rounded-sm px-1 py-0.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                      aria-label="Cancel reply"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : null}
+                <Textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder={
+                    replyTarget
+                      ? `Reply to @${replyTarget.username}...`
+                      : "Any thought on this?"
+                  }
+                  rows={isExpanded ? 8 : 1}
+                  className={cn(
+                    "resize-none border-0 bg-transparent px-1 py-2 shadow-none transition-all focus-visible:ring-0 dark:bg-transparent",
+                    isExpanded
+                      ? "max-h-[45vh] min-h-[10rem]"
+                      : "max-h-32 min-h-10 py-2.5"
+                  )}
+                />
+              </div>
               <Button
                 type="button"
                 variant="ghost"

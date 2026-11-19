@@ -11,12 +11,19 @@ import {
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useState } from "react"
+import { usePostDetailReply } from "./post-detail-reply-context"
 
 export default function PostReplies() {
   const [isReplyHidden, setIsReplyHidden] = useState<boolean>(false)
+  const { startReply } = usePostDetailReply()
 
   const toggleReplyShowUI = () => {
     setIsReplyHidden((prev: boolean) => !prev)
+  }
+
+  const handleReplyClick = (username: string) => {
+    setIsReplyHidden(true)
+    startReply(username)
   }
 
   return (
@@ -56,7 +63,11 @@ export default function PostReplies() {
                 21
               </Button>
 
-              <Button variant={"ghost"} size={"sm"} onClick={toggleReplyShowUI}>
+              <Button
+                variant={"ghost"}
+                size={"sm"}
+                onClick={() => handleReplyClick("tomas")}
+              >
                 <HugeiconsIcon icon={ReplyIcon} />
                 Reply
               </Button>
@@ -105,7 +116,11 @@ export default function PostReplies() {
                           21
                         </Button>
 
-                        <Button variant={"ghost"} size={"sm"}>
+                        <Button
+                          variant={"ghost"}
+                          size={"sm"}
+                          onClick={() => handleReplyClick("tomas")}
+                        >
                           <HugeiconsIcon icon={ReplyIcon} />
                           Reply
                         </Button>
@@ -155,7 +170,11 @@ export default function PostReplies() {
                           21
                         </Button>
 
-                        <Button variant={"ghost"} size={"sm"}>
+                        <Button
+                          variant={"ghost"}
+                          size={"sm"}
+                          onClick={() => handleReplyClick("tomas")}
+                        >
                           <HugeiconsIcon icon={ReplyIcon} />
                           Reply
                         </Button>
