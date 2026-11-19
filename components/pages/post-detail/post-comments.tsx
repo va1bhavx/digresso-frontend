@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import PostReplies from "./post-replies"
 
 export default function PostComment() {
   return (
@@ -13,7 +14,7 @@ export default function PostComment() {
       </TabsList>
 
       <TabsContent value={"relevant"} className={""}>
-        {/*<Posts />*/}
+        <PostReplies />
       </TabsContent>
     </Tabs>
   )

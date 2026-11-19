@@ -37,7 +37,7 @@ const TRENDING_NOW = [
 
 export default function RightSidebar() {
   return (
-    <aside className="hidden w-74 shrink-0 px-4 py-3 lg:block">
+    <aside className="hidden w-74 shrink-0 px-2 py-3 lg:block">
       <div className="sticky top-6 space-y-4">
         <section>
           <Input
@@ -47,14 +47,16 @@ export default function RightSidebar() {
         </section>
         <section>
           <Card className="border-0 bg-transparent pb-0 ring-0">
-            <CardHeader>
-              <CardTitle>Trending now</CardTitle>
+            <CardHeader className="px-2">
+              <h1 className="text-lg font-medium tracking-tight">
+                Trending now
+              </h1>
             </CardHeader>
             <CardContent className="p-0 pb-0!">
               <div className="flex flex-col">
                 {TRENDING_NOW.map((trending) => (
                   <div
-                    className="group flex flex-col gap-2 px-4 py-2 hover:cursor-pointer hover:bg-popover"
+                    className="group flex flex-col gap-2 px-2 py-2 hover:cursor-pointer hover:bg-popover"
                     key={trending.id}
                   >
                     <div>

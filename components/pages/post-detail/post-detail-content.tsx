@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
+  ArrowExpand01Icon,
   Bookmark01Icon,
   Chatting01Icon,
   EllipsisIcon,
@@ -11,10 +12,11 @@ import {
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import PostComment from "./post-comments"
+import { Input } from "@/components/ui/input"
 
 export default function PostDetailContent() {
   return (
-    <section className="">
+    <section className="relative">
       <div className="flex items-center justify-between px-4 py-4">
         <div className="flex items-center gap-3">
           <Avatar size="lg">
@@ -103,6 +105,25 @@ export default function PostDetailContent() {
       </div>
       <div>
         <PostComment />
+      </div>
+
+      <div className="sticky bottom-0 w-full px-4 py-4">
+        <div className="relative">
+          <Avatar className={"absolute top-2 left-2"}>
+            <AvatarFallback>VK</AvatarFallback>
+          </Avatar>
+          <Input
+            className="min-h-12 rounded-full bg-primary-foreground! pl-12"
+            placeholder="What's your reply?"
+          />
+          <Button
+            variant={"ghost"}
+            size={"sm"}
+            className={"absolute top-2 right-2"}
+          >
+            <HugeiconsIcon icon={ArrowExpand01Icon} />
+          </Button>
+        </div>
       </div>
     </section>
   )
