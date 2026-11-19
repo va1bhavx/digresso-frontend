@@ -3,7 +3,7 @@ import PostDetailHeader from "./post-detail-header"
 
 export default function PostDetails() {
   return (
-    <section className="">
+    <section className="relative">
       <PostDetailHeader />
       <PostDetailContent />
     </section>

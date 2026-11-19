@@ -104,26 +104,25 @@ export default function PostDetailContent() {
         </div>
       </div>
       <div>
-        <PostComment />
-      </div>
-
-      <div className="sticky bottom-0 z-20 w-full px-4 py-4">
-        <div className="relative">
-          <Avatar className={"absolute top-2 left-2"}>
-            <AvatarFallback>VK</AvatarFallback>
-          </Avatar>
-          <Input
-            className="min-h-12 rounded-full bg-primary-foreground! pl-12"
-            placeholder="What's your reply?"
-          />
-          <Button
-            variant={"ghost"}
-            size={"sm"}
-            className={"absolute top-2 right-2"}
-          >
-            <HugeiconsIcon icon={ArrowExpand01Icon} />
-          </Button>
+        <div className="sticky top-0 z-20 w-full px-4 py-4">
+          <div className="relative">
+            <Avatar className={"absolute top-2 left-2"}>
+              <AvatarFallback>VK</AvatarFallback>
+            </Avatar>
+            <Input
+              className="min-h-12 rounded-full bg-primary-foreground! pl-12"
+              placeholder="What's your reply?"
+            />
+            <Button
+              variant={"ghost"}
+              size={"sm"}
+              className={"absolute top-2 right-2"}
+            >
+              <HugeiconsIcon icon={ArrowExpand01Icon} />
+            </Button>
+          </div>
         </div>
+        <PostComment />
       </div>
     </section>
   )
